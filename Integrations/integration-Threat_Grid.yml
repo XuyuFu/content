@@ -506,7 +506,7 @@ script:
                 'Email', 'Login', 'Name', 'Organization', 'Role'
             ]),
             'ContentsFormat': formats['json'],
-            'Contents': r
+            'Contents': user
         })
 
 
@@ -834,7 +834,7 @@ script:
 
 
     if demisto.command() == 'test-module':
-        who_am_i()
+        request = req('GET', USER_API + 'session/whoami')
         demisto.results('ok')
     elif demisto.command() == 'threat-grid-download-artifact':
         download_artifact()
